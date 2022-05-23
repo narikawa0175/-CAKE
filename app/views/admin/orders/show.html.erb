@@ -55,6 +55,7 @@
       <td>
        <%= form_with model: @order_data,url: admin_order_datail_path(@order_data.id),method: :patch do |f| %>
         <%= f.select :production_status,OrderDatail.production_statuses_i18n.invert,{} %>
+        <%= f.submit "更新" %>
        <% end %>
       </td>
      </tr>

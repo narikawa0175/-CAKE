@@ -1,35 +1,43 @@
 <%= render 'admin/admins' %>
 
-<div>
- <p>商品一覧</p>
- <%= link_to new_admin_item_path do %>
-  +
- <% end %>
-</div>
+<div class="container">
+ <div class="row p-5 text-center">
+  <div class="col text-left">
+   <span class="bg-light px-3"><strong>商品一覧</strong></span>
+  </div>
+  <div class="col text-right">
+  <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">
+   <%= link_to new_admin_item_path,class:'text-secondary' do %><strong>＋</strong><% end %>
+  </button>
+  </div>
+ </div>
 
-<table>
- <thead>
-  <tr>
-   <td>商品ID</td>
-   <td>商品名</td>
-   <td>税抜き価格</td>
-   <td>ジャンル</td>
-   <td>ステータス</td>
-  </tr>
- </thead>
- <tbody>
-  <% @items.each do |item| %>
-  <tr>
-   <td><%= item.id %></td>
-   <td>
-    <%= link_to admin_item_path(item.id) do %>
-     <%= item.name %>
+ <div class="row">
+  <table class="table mx-auto">
+   <thead class="table-secondary">
+    <tr>
+     <td><strong>商品ID</strong></td>
+     <td><strong>商品名</strong></td>
+     <td><strong>税抜き価格</strong></td>
+     <td><strong>ジャンル</strong></td>
+     <td><strong>ステータス</strong></td>
+    </tr>
+   </thead>
+   <tbody>
+    <% @items.each do |item| %>
+    <tr>
+     <td><%= item.id %></td>
+     <td>
+      <%= link_to admin_item_path(item.id) do %>
+       <%= item.name %>
+      <% end %>
+     </td>
+     <td><%= item.price.to_s(:delimited) %></td>
+     <td><%= item.genre.name %></td>
+     <td class="text-success"><%= item.is_active ? '販売中' : '販売停止中' %></td>
+    </tr>
     <% end %>
-   </td>
-   <td><%= item.price %></td>
-   <td><%= item.genre.name %></td>
-   <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
-  </tr>
-  <% end %>
- </tbody>
-</table>
+   </tbody>
+  </table>
+ </div>
+</div>

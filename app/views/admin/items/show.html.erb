@@ -1,6 +1,10 @@
 <%= render 'admin/admins' %>
 
-<p>商品詳細</p>
+<div class="container">
+ <div class="row p-5">
+  <h5 class="bg-light px-5"><strong>商品詳細</strong></h5>
+ </div>
+
 <%= image_tag @item.image,size:"250x170" %>
 <table>
  <tbody>
@@ -30,5 +34,5 @@
   </tr>
  </tbody>
 </table>
-
+</div>
 <%= link_to "編集する",edit_admin_item_path(@item.id) %>

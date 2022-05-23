@@ -1,31 +1,56 @@
 <%= render 'admin/admins' %>
 
-<% @item.errors.any? %>
-<% @item.errors.full_messages.each do |message| %>
- <%= message %>
-<% end %>
-<p>商品新規登録</p>
-<%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
- <%= f.label :image, "商品画像" %>
- <%= f.file_field :image,accept:"image/*" %></br>
+<div class="container">
+ <% @item.errors.any? %>
+ <% @item.errors.full_messages.each do |message| %>
+  <%= message %>
+ <% end %>
  
- <%= f.label :name, "商品名" %>
- <%= f.text_field :name %></br>
+ <div class="row p-5">
+  <span class="bg-light px-3"><strong>商品新規登録</strong></span>
+ </div>
  
- <%= f.label :introduction, "商品説明" %>
- <%= f.text_area :introduction %></br>
- 
- <%= f.label :genre_id, "ジャンル" %>
- <%= f.select :genre_id, Genre.all.map {|genre| [genre.name,genre.id]}, include_blank: "--選択してください--" %></br>
- 
- <%= f.label :price, "税抜き価格" %>
- <%= f.number_field :price %>円</br>
- 
- <%= f.label :is_active, "販売ステータス" %>
- <%= f.radio_button :is_active,true %>
- <%= f.label :is_active,'販売中',value: true %>
- <%= f.radio_button :is_active,false %>
- <%= f.label :is_active,'販売停止中',value: false %></br>
- 
- <%= f.submit "新規登録" %>
-<% end %>
+ <%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
+ <table class="mx-auto">
+  <tbody>
+   <tr>
+    <td><%= f.label :image, "商品画像",class:'my-1' %></td>
+    <td><%= f.file_field :image,accept:"image/*",class:'my-1' %></td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label :name, "商品名",class:'my-1' %></td>
+    <td><%= f.text_field :name,class:'my-1' %></td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label :introduction, "商品説明",class:'my-1' %></td>
+    <td><%= f.text_area :introduction,class:'my-1' %></td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label :genre_id, "ジャンル",class:'my-1' %></td>
+    <td><%= f.select :genre_id, Genre.all.map {|genre| [genre.name,genre.id]}, include_blank: "--選択してください--",class:'my-1' %></td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label :price, "税抜価格",class:'my-1' %></td>
+    <td><%= f.number_field :price,class:'my-1' %>円</td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label :is_active, "販売ステータス",class:'my-1' %></td>
+    <td>
+     <%= f.radio_button :is_active,true %>
+     <%= f.label :is_active,'販売中',value: true,class:'my-1' %>
+     <%= f.radio_button :is_active,false %>
+     <%= f.label :is_active,'販売停止中',value: false,class:'my-1' %>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <div class="text-center">
+  <%= f.submit "新規登録",class:'btn btn-success px-4 m-4' %>
+ </div>
+ <% end %>
+</div>

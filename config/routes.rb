@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   
    root to: 'public/homes#top'
-   get '/about' => "homes#about"
+   get '/about' => "public/homes#about"
    get 'customers/show'
    get 'customers/edit'
    get 'customers/unsubscribe'

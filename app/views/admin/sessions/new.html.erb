@@ -1,24 +1,33 @@
 <div class="container">
- <p><strong>管理者</strong>ログイン</p>
- <div class="row">
-  <div class="mx-auto col-11">
-  <%= form_with model: @user,url: admin_session_path do |f| %>
-   <div class="field">
-    <%= f.label "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-   </div>
-
-   <div class="field">
-    <%= f.label "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-   </div>
-
-   <div class="actions">
-    <%= f.submit "ログイン" %>
-   </div>
-  <% end %>
-  </div>
+ <div class="row p-5">
+  <h5 class="bg-light px-5"><strong>管理者</strong>ログイン</h5>
  </div>
+ 
+ <%= form_with model: @admin,url: admin_session_path,method: :post do |f| %>
+ <table class="mx-auto">
+  <thead>
+   <tr></tr>
+   <tr></tr>
+   <tr></tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td><%= f.label "メールアドレス",class:'my-1' %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'mx-5 my-1 form-control' %></td>
+   </tr>
+   
+   <tr>
+    <td><%= f.label "パスワード",class:'my-1' %></td>
+    <td><%= f.password_field :password, autocomplete: "current-password",class:'mx-5 my-1 form-control' %></td>
+   </tr>
+   
+   <tr>
+    <td></td>
+    <td><%= f.submit "ログイン",class:'m-5 px-5 btn btn-primary' %></td>
+   </tr>
+  </tbody>
+ </table>
+ <% end %>
 </div>
 
 <%= render "admin/shared/links" %>
