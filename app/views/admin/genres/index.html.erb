@@ -1,25 +1,34 @@
 <%= render 'admin/admins'%>
 
-<p>ジャンル<strong>一覧・追加</strong></p>
-<%= form_with model: @add,url: '/admin/genres',method: :post do |f| %>
- <p>ジャンル名</p>
- <%= f.text_field:name %>
+<div class="container">
+ <div class="row p-5">
+  <h5 class="bg-light px-4">ジャンル一覧・追加</h5>
+ </div>
  
- <%= f.submit'新規登録' %>
-<% end %>
-
-<table>
-  <tr>
-   <th>ジャンル</th>
-  </tr>
-  <% @list.each do |list| %>
-  <tr>
-   <td>
-    <%= list.name %>
-   </td>
-   <td>
-    <%= link_to "編集する",edit_admin_genre_path(list.id) %>
-   </td>
-  </tr>
-<% end %>
-</table>
+ <div class="inline">
+  <%= form_with model: @add,url: '/admin/genres',method: :post do |f| %>
+   <label class="m-3" for="genre_name">ジャンル名</label>
+   <%= f.text_field:name,class:'m-3',:placeholder=>"ジャンル名" %>
+   <%= f.submit'新規登録',class:'btn btn-success m-3 px-4' %>
+  <% end %>
+ </div>
+ 
+ <div class="row mt-4">
+  <table class="table col-4">
+   <thead class="bg-light">
+    <tr>
+     <th>ジャンル</th>
+     <th></th>
+    </tr>
+   </thead>
+   <tbody>
+    <% @list.each do |list| %>
+     <tr>
+      <td><%= list.name %></td>
+      <td><%= link_to "編集する",edit_admin_genre_path(list.id),class:'btn btn-success' %></td>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
+</div>

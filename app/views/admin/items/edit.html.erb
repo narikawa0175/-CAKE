@@ -1,40 +1,44 @@
 <%= render 'admin/admins' %>
 
-<p>商品編集</p>
-<%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
-<table>
- <tbody>
-  <tr>
-   <td><%= f.label :image,"商品画像" %></td>
-   <td><%= f.file_field :image,accept:"image/*" %></td>
-  </tr>
-  
-  <tr>
-   <td><%= f.label :name,"商品名" %></td>
-   <td><%= f.text_field :name %></td>
-  </tr>
-  
-  <tr>
-   <td><%= f.label :introduction,"商品説明" %></td>
-   <td><%= f.text_area :introduction %></td>
-  </tr>
-  
-  <tr>
-   <td><%= f.label :genre_id,"ジャンル" %></td>
-   <td><%= f.select :genre_id, Genre.all.map {|genre| [genre.name,genre.id]} %></td>
-  </tr>
-  
-  <tr>
-   <td><%= f.label :price,"税抜き価格" %></td>
-   <td><%= f.number_field :price %>円</td>
-  </tr>
-  
-  <tr>
-   <td><%= f.label :is_active,"販売ステータス" %></td>
-   <td><%= f.radio_button :is_active,true %>販売中  <%= f.radio_button :is_active,false %>販売停止中</td>
-  </tr>
- </tbody>
-</table>
+<div class="container">
+ <div class="row p-5">
+  <h5 class="bg-light px-3">商品編集</h5>
+ </div>
 
-<%= f.submit "変更を保存" %>
-<% end %>
+ <div class="row justify-content-center">
+  <%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
+   <table class="table table-sm table-borderless">
+    <tbody>
+     <tr>
+      <td><%= f.label :image,"商品画像" %></td>
+      <td><%= f.file_field :image,accept:"image/*" %></td>
+     </tr>
+     <tr>
+      <td><%= f.label :name,"商品名" %></td>
+      <td><%= f.text_field :name,class:'form-control border-dark' %></td>
+     </tr>
+     <tr>
+      <td><%= f.label :introduction,"商品説明" %></td>
+      <td><%= f.text_area :introduction,class:'form-control border-dark',size:"40x5" %></td>
+     </tr>
+     <tr>
+      <td><%= f.label :genre_id,"ジャンル" %></td>
+      <td><%= f.select :genre_id, Genre.all.map {|genre| [genre.name,genre.id]},{},{class:'form-control border-dark'} %></td>
+     </tr>
+     <tr>
+      <td><%= f.label :price,"税抜き価格" %></td>
+      <td><%= f.number_field :price,class:'form-control border-dark' %></td>
+      <td>円</td>
+     </tr>
+     <tr>
+      <td><%= f.label :is_active,"販売ステータス" %></td>
+      <td><%= f.radio_button :is_active,true %>販売中  <%= f.radio_button :is_active,false,class:'ml-5' %>販売停止中</td>
+     </tr>
+    </tbody>
+   </table>
+   <div class="text-center">
+    <%= f.submit "変更を保存",class:'btn btn-lg btn-success px-4' %>
+   </div>
+  <% end %>
+ </div>
+</div>

@@ -3,22 +3,18 @@
   <h5 class="bg-light px-5"><strong>管理者</strong>ログイン</h5>
  </div>
  
+ <div class="row justify-content-center">
  <%= form_with model: @admin,url: admin_session_path,method: :post do |f| %>
- <table class="mx-auto">
-  <thead>
-   <tr></tr>
-   <tr></tr>
-   <tr></tr>
-  </thead>
+ <table class="table table-borderless mx-auto">
   <tbody>
    <tr>
-    <td><%= f.label "メールアドレス",class:'my-1' %></td>
-    <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'mx-5 my-1 form-control' %></td>
+    <td><%= f.label "メールアドレス",class:'mr-5' %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control border-dark' %></td>
    </tr>
    
    <tr>
-    <td><%= f.label "パスワード",class:'my-1' %></td>
-    <td><%= f.password_field :password, autocomplete: "current-password",class:'mx-5 my-1 form-control' %></td>
+    <td><%= f.label "パスワード",class:'' %></td>
+    <td><%= f.password_field :password, autocomplete: "current-password",class:'form-control border-dark' %></td>
    </tr>
    
    <tr>
@@ -28,6 +24,7 @@
   </tbody>
  </table>
  <% end %>
+ </div>
 </div>
 
 <%= render "admin/shared/links" %>
