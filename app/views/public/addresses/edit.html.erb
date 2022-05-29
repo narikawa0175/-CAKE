@@ -1,0 +1,27 @@
+<%= render 'public/publics' %>
+
+<div class="container">
+ <div class="row p-5">
+  <h5 class="bg-light px-3">配送先編集</h5>
+ </div>
+ 
+ <%= form_with model: @address,url: address_path,method: :patch do |f| %>
+  <table class="table table-borderless col-9">
+   <tbody>
+    <tr>
+     <td>郵便番号(ハイフンなし)</td>
+     <td><%= f.number_field :postal_code %></td>
+    </tr>
+    <tr>
+     <td>住所</td>
+     <td colspan="2"><%= f.text_field :address,size:"50" %></td>
+    </tr>
+    <tr>
+     <td>宛名</td>
+     <td><%= f.text_field :name %></td>
+     <td><%= f.submit "変更内容を保存" %></td>
+    </tr>
+   </tbody>
+  </table>
+ <% end %>
+</div>

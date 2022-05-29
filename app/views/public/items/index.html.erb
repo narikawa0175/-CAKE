@@ -1,0 +1,15 @@
+<%= render 'public/publics' %>
+
+<div class="container">
+ <div class="d-flex flex-row">
+  <div class="col-2 border border-dark mt-5">
+   <p class="border-bottom border-dark text-center"><strong>ジャンル検索</strong></p>
+   <div class="d-flex flex-column overflow-scroll">
+    <% @genres.each do |genre| %>
+     <div class="p-2">
+      <%= genre.name %>
+     </div>
+    <% end %>
+   </div>
+  </div>
+ </div>
