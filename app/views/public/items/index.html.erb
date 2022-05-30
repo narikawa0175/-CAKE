@@ -1,15 +1,22 @@
 <%= render 'public/publics' %>
 
 <div class="container">
- <div class="d-flex flex-row">
-  <div class="col-2 border border-dark mt-5">
-   <p class="border-bottom border-dark text-center"><strong>ジャンル検索</strong></p>
-   <div class="d-flex flex-column overflow-scroll">
-    <% @genres.each do |genre| %>
-     <div class="p-2">
-      <%= genre.name %>
-     </div>
-    <% end %>
-   </div>
+ <div class="row p-5">
+  <h3><strong>商品一覧</strong></h3>
+  <p class="m-2"><strong>(全<%= @items.count %>件)</strong></p>
+ </div>
+ 
+ <div>
+  <div class="d-flex flex-wrap" style="width: 90%;">
+   <% @items.each do |item| %>
+    <div class="mx-2 mb-5">
+     <%= image_tag item.image,size:"200x120" %></br>
+     <%= link_to item_path(item.id) do %>
+      <%= item.name %></br>
+     <% end %>
+     ￥<%= item.price.to_s(:delimited) %>
+    </div>
+   <% end %>
   </div>
  </div>
+</div>

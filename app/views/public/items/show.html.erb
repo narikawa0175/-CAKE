@@ -1,2 +1,23 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= render 'public/publics' %>
+
+<div class="container">
+ <div class="row">
+  <%= image_tag @item.image,size:"260x170",class:'m-5' %>
+  
+  <div class="m-5">
+   <h4><strong><%= @item.name %></strong></h4>
+   <h5 class="mb-5"><%= @item.introduction %></h5>
+   <div class="d-flex flex-row">
+    <h4>¥<%= @item.add_tax_price.to_s(:delimited) %></h4>
+    <p class="m-2">(税込)</p>
+   </div>
+   <div class="d-flex flex-row">
+    <%= form_with model: @cart_item,url: create_cart_item_path,method: :post do |f| %>
+     <%= f.hidden_field :item_id,:value =>@item.id %>
+     <%= f.select :amount,*[1..10] %>
+     <%= f.submit "カートに入れる" %>
+    <% end %>
+   </div>
+  </div>
+ </div>
+</div>
