@@ -1,21 +1,32 @@
 <header class="border border-dark">
  <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-   <div class="navbar-brand border border-dark px-5">
-    <h1>LOGO</h1>
-   </div>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown"
+  <div class="navbar-brand border border-dark px-5 mt-5">
+   <h1 class="px-3">LOGO</h1>
+  </div>
+
+  <div class="col-5 ml-5 mt-5">
+   <p class="text-center ml-5">ようこそ、<%= current_customer.last_name %>さん！</p>
+  </div>
+   
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown"
    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
-     <li class="nav-item"><%= link_to "マイページ","/customers/#{current_customer.id}",class:'nav-link btn btn-outline-secondary mx-3' %></li>
-     <li class="nav-item"><%= link_to "商品一覧",items_path,class:'nav-link btn btn-outline-secondary mx-3' %></li>
-     <li class="nav-item"><%= link_to "ジャンル一覧",admin_genres_path,class:'nav-link btn btn-outline-secondary mx-3' %></li>
-     <li class="nav-item"><%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'nav-link btn btn-outline-secondary mx-3' %></li>
-    </ul>
-   </div>
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+   <ul class="navbar-nav">
+    <li class="nav-item"><%= link_to "マイページ",customer_path(current_customer.id),class:'nav-link btn btn-outline-secondary mx-3' %></li>
+    <li class="nav-item"><%= link_to "商品一覧",items_path,class:'nav-link btn btn-outline-secondary mx-3' %></li>
+    <li class="nav-item"><%= link_to "ジャンル一覧",admin_genres_path,class:'nav-link btn btn-outline-secondary mx-3' %></li>
+    <li class="nav-item"><%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'nav-link btn btn-outline-secondary mx-3' %></li>
+   </ul>
   </div>
  </nav>
+ 
+ <div class="text-right mb-3 mr-5">
+  <%= form_with url: root_path,method: :get,local: true do |f| %>
+   <%= f.text_field :item,:placeholder=>"Search" do %>
+    <%= f.submit :name=>nil %>
+   <% end %>
+  <% end %>
+ </div>
 </header>

@@ -1,23 +1,29 @@
-<%= render 'public/publics' %>
+<% if customer_signed_in? %>
+ <%= render 'public/publics' %>
+<% end %>
 
 <div class="container">
- <div class="row">
-  <%= image_tag @item.image,size:"260x170",class:'m-5' %>
+ <div class="row justify-content-center">
+  <%= image_tag @item.image,size:"300x200",class:'m-5' %>
   
   <div class="m-5">
    <h4><strong><%= @item.name %></strong></h4>
    <h5 class="mb-5"><%= @item.introduction %></h5>
    <div class="d-flex flex-row">
-    <h4>¥<%= @item.add_tax_price.to_s(:delimited) %></h4>
+    <h4>¥ <%= @item.add_tax_price.to_s(:delimited) %></h4>
     <p class="m-2">(税込)</p>
    </div>
-   <div class="d-flex flex-row">
-    <%= form_with model: @cart_item,url: create_cart_item_path,method: :post do |f| %>
-     <%= f.hidden_field :item_id,:value =>@item.id %>
-     <%= f.select :amount,*[1..10] %>
-     <%= f.submit "カートに入れる" %>
-    <% end %>
-   </div>
+   <%= form_with model: @cart_item,url: create_cart_item_path,method: :post do |f| %>
+   <%= f.hidden_field :item_id,:value => @item.id %>
+    <table class="table table-borderless mt-4">
+     <tbody>
+     <tr>
+      <td><%= f.select :amount,*[1..10],{include_blank: "個数選択"},{class:'form-control mr-5'} %></td>
+      <td><%= f.submit "カートに入れる",class:'btn btn-success ml-4' %></td>
+     </tr>
+     </tbody>
+    </table>
+   <% end %>
   </div>
  </div>
 </div>

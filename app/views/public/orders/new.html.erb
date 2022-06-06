@@ -1,0 +1,61 @@
+<%= render 'public/publics' %>
+
+<div class="container">
+ <div class="row pt-5 px-5">
+  <h5 class="bg-light px-3">注文情報入力</h5>
+ </div>
+ 
+ <%= form_with model: @order,url: confirm_order_path,method: :post do |f| %>
+  <div class="mt-2">
+   <h5><strong>支払い方法</strong></h5>
+   <div class="ml-5">
+    <%= f.radio_button :method_of_payment,Order.method_of_payments.key(0) %>
+    <%= f.label :method_of_payment,Order.method_of_payments_i18n[:credit_card] %>
+   </div>
+   <div class="ml-5">
+    <%= f.radio_button :method_of_payment,Order.method_of_payments.key(1) %>
+    <%= f.label :method_of_payment,Order.method_of_payments_i18n[:transfer] %>
+   </div>
+  </div>
+  
+  <div class="mt-2">
+   <h5><strong>お届け先</strong></h5>
+   <div class="ml-5">
+    <%= f.radio_button :select_address,"0",checked: true %>
+    <%= f.label :select_address,"ご自身の住所" %>
+    <div class="ml-4 mb-2">
+     〒<%= current_customer.postal_code %>
+     <%= current_customer.address %></br>
+     <%= current_customer.last_name %><%= current_customer.first_name %>
+    </div>
+    <%= f.radio_button :select_address,"1" %>
+    <%= f.label :select_address,"登録済住所から選択" %>
+    <div class="ml-4 mb-2">
+     <%= f.select :address_id,options_from_collection_for_select(Address.all,:id,:address_display),{},{class:'form-control col-10 border-dark'} %>
+    </div>
+    <%= f.radio_button :select_address,"2" %>
+    <%= f.label :select_address,"新しいお届け先" %>
+    <table class="table table-sm table-borderless col-8 ml-4">
+     <tbody>
+      <tr>
+       <td>郵便番号(ハイフンなし)</td>
+       <td><%= f.number_field :postal_code,:placeholder=>"0000000" %></td>
+      </tr>
+      <tr>
+       <td>住所</td>
+       <td><%= f.text_field :address,size:"55",:placeholder=>"東京都渋谷区代々木神園町０−０" %></td>
+      </tr>
+      <tr>
+       <td>宛名</td>
+       <td><%= f.text_field :name,:placeholder=>"令和道子" %></td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  
+  <div class="row">
+   <%= f.submit "確認画面に進む",class:'btn btn-primary px-4 mx-auto mb-2' %>
+  </div>
+ <% end %>
+</div>

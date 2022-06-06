@@ -39,11 +39,12 @@
  </table>
  
  <div class="row mb-3">
-  <h5><strong>配送先</strong></h5>
-  <%= link_to "一覧を見る",addresses_path(@customer.id) %>
+  <h5><strong>配送先　</strong></h5>
+  <%= link_to "一覧を見る",addresses_path(@customer.id),class:'btn btn-primary px-4 ml-5' %>
  </div>
  
- <div class="row">
+ <div class="row mb-5">
   <h5><strong>注文履歴</strong></h5>
+  <%= link_to "一覧を見る",orders_path,class:'btn btn-primary px-4 ml-5' %>
  </div>
 </div>

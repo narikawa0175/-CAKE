@@ -31,7 +31,14 @@ Rails.application.routes.draw do
    delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all',as:'destroy_cart_items'
    patch '/cart_items/:id' => 'public/cart_items#update',as:'update_cart_item'
    delete '/cart_items/:id' => 'public/cart_items#destroy',as:'destroy_cart_item'
-  
+   
+   get '/orders/new' => 'public/orders#new',as:'new_order'
+   post '/orders/confirm' => 'public/orders#confirm',as:'confirm_order'
+   get '/orders/complete' => 'public/orders#complete',as:'complete_order'
+   post '/orders' => 'public/orders#create',as:'create_order'
+   get '/orders' => 'public/orders#index',as:'orders'
+   get '/orders/:id' => 'public/orders#show',as:'order'
+   
   namespace :admin do
    root to: 'homes#top'
    resources :genres,only:[:index,:create,:edit,:update]

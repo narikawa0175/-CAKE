@@ -1,4 +1,6 @@
-<%= render 'public/publics' %>
+<% if customer_signed_in? %>
+ <%= render 'public/publics' %>
+<% end %>
 
 <div class="container">
  <div class="row p-5">
@@ -7,7 +9,7 @@
  </div>
  
  <div>
-  <div class="d-flex flex-wrap" style="width: 90%;">
+  <div class="d-flex flex-wrap">
    <% @items.each do |item| %>
     <div class="mx-2 mb-5">
      <%= image_tag item.image,size:"200x120" %></br>
@@ -17,6 +19,7 @@
      ￥<%= item.price.to_s(:delimited) %>
     </div>
    <% end %>
+   <% paginate @items %>
   </div>
  </div>
 </div>
