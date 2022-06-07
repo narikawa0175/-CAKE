@@ -6,7 +6,7 @@
  </div>
  
  <%= form_with model: @address,url: address_path,method: :patch do |f| %>
-  <table class="table table-borderless col-9">
+  <table class="table table-borderless col-9 mb-5">
    <tbody>
     <tr>
      <td>郵便番号(ハイフンなし)</td>
@@ -14,12 +14,12 @@
     </tr>
     <tr>
      <td>住所</td>
-     <td colspan="2"><%= f.text_field :address,size:"50" %></td>
+     <td colspan=""><%= f.text_field :address,size:"50" %></td>
     </tr>
     <tr>
      <td>宛名</td>
      <td><%= f.text_field :name %></td>
-     <td><%= f.submit "変更内容を保存" %></td>
+     <td><%= f.submit "変更内容を保存",class:'btn btn-success' %></td>
     </tr>
    </tbody>
   </table>

@@ -2,7 +2,7 @@ class Admin::OrderDatailsController < ApplicationController
  def update
   @data=OrderDatail.find(params[:id])
   @data.update(data_params)
-  redirect_to admin_order_path(@data.id)
+  redirect_to admin_order_path(@data.order_id)
  end
  
  private

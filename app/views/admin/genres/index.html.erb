@@ -14,7 +14,7 @@
  </div>
  
  <div class="row mt-4">
-  <table class="table col-4">
+  <table class="table border-bottom col-4 mb-5">
    <thead class="bg-light">
     <tr>
      <th>ジャンル</th>
@@ -24,7 +24,7 @@
    <tbody>
     <% @list.each do |list| %>
      <tr>
-      <td><%= list.name %></td>
+      <td style="vertical-align: middle;"><%= list.name %></td>
       <td><%= link_to "編集する",edit_admin_genre_path(list.id),class:'btn btn-success' %></td>
      </tr>
     <% end %>

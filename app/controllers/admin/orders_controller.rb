@@ -2,12 +2,12 @@ class Admin::OrdersController < ApplicationController
   def show
    @order=Order.find(params[:id])
    @deta=@order.order_datails
-   @order_data=OrderDatail.find(params[:id])
-   @total=0
+   @order.shipping_cost=800
   end
   
   def update
    @order=Order.find(params[:id])
+   @data=@order.order_datails
    @order.update(order_params)
    redirect_to admin_order_path(@order.id)
   end

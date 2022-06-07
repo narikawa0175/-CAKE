@@ -32,11 +32,11 @@
      </tr>
      <tr>
       <td><%= f.label :is_active,"販売ステータス" %></td>
-      <td><%= f.radio_button :is_active,true %>販売中  <%= f.radio_button :is_active,false,class:'ml-5' %>販売停止中</td>
+      <td><%= f.radio_button :is_active,true %>販売中<%= f.radio_button :is_active,false,class:'ml-5' %>販売停止中</td>
      </tr>
     </tbody>
    </table>
-   <div class="text-center">
+   <div class="text-center mb-5">
     <%= f.submit "変更を保存",class:'btn btn-lg btn-success px-4' %>
    </div>
   <% end %>

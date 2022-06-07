@@ -23,15 +23,15 @@
       <%= image_tag cart_item.item.image,size:"70x50",class:'mr-3' %>
       <%= cart_item.item.name %>
      </td>
-     <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+     <td style="vertical-align: middle;"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
      <%= form_with model: cart_item,url: update_cart_item_path(cart_item.id),method: :patch do |f| %>
-      <td>
+      <td style="vertical-align: middle;">
        <%= f.select :amount,*[1..10],{},{class:'form-control-sm'} %>
        <%= f.submit "変更",class:'btn btn-sm btn-success' %>
       </td>
      <% end %>
-     <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-     <td class="text-center"><%= link_to "削除する",destroy_cart_item_path(cart_item.id),method: :delete,class:'btn btn-sm btn-danger' %></td>
+     <td style="vertical-align: middle;"><%= cart_item.subtotal.to_s(:delimited) %></td>
+     <td class="text-center" style="vertical-align: middle;"><%= link_to "削除する",destroy_cart_item_path(cart_item.id),method: :delete,class:'btn btn-sm btn-danger' %></td>
     </tr>
    </tbody>
   <% end %>

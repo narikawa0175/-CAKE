@@ -9,37 +9,37 @@
    <tbody>
     <tr>
      <td>名前</td>
-     <td>(姓)　 <%= f.text_field :last_name,class:'form-control-sm',:placeholder=>"令和" %></td>
-     <td>(名)　 <%= f.text_field :first_name,class:'form-control-sm',:placeholder=>"道子" %></td>
+     <td>(姓)　 <%= f.text_field :last_name,:placeholder=>"令和" %></td>
+     <td>(名)　 <%= f.text_field :first_name,:placeholder=>"道子" %></td>
     </tr>
     <tr>
      <td>フリガナ</td>
-     <td>(セイ) <%= f.text_field :last_name_kana,class:'form-control-sm',:placeholder=>"レイワ" %></td>
-     <td>(メイ) <%= f.text_field :first_name_kana,class:'form-control-sm',:placeholder=>"ミチコ" %></td>
+     <td>(セイ) <%= f.text_field :last_name_kana,:placeholder=>"レイワ" %></td>
+     <td>(メイ) <%= f.text_field :first_name_kana,:placeholder=>"ミチコ" %></td>
     </tr>
     <tr>
      <td>メールアドレス</td>
-     <td>　　　<%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control-sm',:placeholder=>"sample@example.com" %></td>
+     <td>　　　<%= f.email_field :email, autofocus: true, autocomplete: "email",:placeholder=>"sample@example.com" %></td>
     </tr>
     <tr>
      <td>郵便番号(ハイフンなし)</td>
-     <td>　　　<%= f.number_field :postal_code,class:'form-control-sm',:placeholder=>"0000000" %></td>
+     <td>　　　<%= f.number_field :postal_code,:placeholder=>"0000000" %></td>
     </tr>
     <tr>
      <td>住所</td>
-     <td colspan="2">　　　<%= f.text_field :address,class:'form-control-sm',size:"56",:placeholder=>"東京都渋谷区代々木神園町０−０" %></td>
+     <td colspan="2">　　　<%= f.text_field :address,size:"50",:placeholder=>"東京都渋谷区代々木神園町０−０" %></td>
     </tr>
     <tr>
      <td>電話番号(ハイフンなし)</td>
-     <td>　　　<%= f.number_field :telephone_number,class:'form-control-sm',:placeholder=>"00000000000" %></td>
+     <td>　　　<%= f.number_field :telephone_number,:placeholder=>"00000000000" %></td>
     </tr>
     <tr>
      <td>パスワード(6文字以上)</td>
-     <td>　　　<%= f.password_field :password, autocomplete: "new-password",class:'form-control-sm' %></td>
+     <td>　　　<%= f.password_field :password, autocomplete: "new-password" %></td>
     </tr>
     <tr>
      <td>パスワード(確認用)</td>
-     <td>　　　<%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control-sm' %></td>
+     <td>　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
     </tr>
     <tr>
      <td></td>
