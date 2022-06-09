@@ -5,6 +5,17 @@
   <h5 class="bg-light px-3">配送先登録/一覧</h5>
  </div>
  
+ <div class="text-danger">
+  <% if @address.errors.any? %>
+   <%= @address.errors.count %>件のエラー
+   <ul>
+    <% @address.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+ 
  <%= form_with model: @address,url: create_address_path,nethod: :post do |f| %>
   <table class="table table-borderless col-10 mb-5">
    <tbody>

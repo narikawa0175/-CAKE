@@ -1,15 +1,21 @@
 <%= render 'admin/admins' %>
 
 <div class="container">
- <% @item.errors.any? %>
- <% @item.errors.full_messages.each do |message| %>
-  <%= message %>
- <% end %>
- 
  <div class="row p-5">
   <h5 class="bg-light px-3">商品新規登録</h5>
  </div>
  
+ <div class="text-danger">
+  <% if @item.errors.any? %>
+   <%= @item.errors.count %>件のエラー
+   <ul>
+    <% @item.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+  
  <div class="row justify-content-center">
   <%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
    <table class="table table-sm table-borderless">

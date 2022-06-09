@@ -7,6 +7,13 @@
   <%= image_tag @item.image,size:"300x200",class:'m-5' %>
   
   <div class="m-5">
+   <div class="mb-5 text-danger">
+    <% if @cart_item.errors.any? %>
+     <% @cart_item.errors.full_messages.each do |message| %>
+      <%= message %>
+     <% end %>
+    <% end %>
+   </div>
    <h4><strong><%= @item.name %></strong></h4>
    <h5 class="mb-5"><%= @item.introduction %></h5>
    <div class="d-flex flex-row">

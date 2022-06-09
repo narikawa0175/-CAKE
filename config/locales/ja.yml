@@ -18,3 +18,19 @@ ja:
     waiting: "製作待ち"
     production: "製作中"
     complete: "製作完了"
+    
+ activerecord:
+  attributes:
+   cart_item:
+    amount: "個数"
+   
+   address:
+    postal_code: "郵便番号"
+    address: "住所"
+    name: "宛名"
+    
+   item:
+    image: "画像ファイル"
+    name: "商品名"
+    introduction: "商品説明"
+    price: "税込価格"

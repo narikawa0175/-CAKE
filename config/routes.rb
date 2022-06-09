@@ -16,6 +16,7 @@ Rails.application.routes.draw do
    get '/customers/:id' => 'public/customers#show',as:'customer'
    get '/customers/:id/edit' => 'public/customers#edit',as:'edit_customer'
    patch '/customers/:id' => 'public/customers#update',as:'update_customer'
+   patch '/customers/:id/withdrawal' => 'public/customers#withdrawal',as:'withdrawal_customer'
    
    post '/addresses' => 'public/addresses#create',as:'create_address'
    get '/addresses/:id' => 'public/addresses#index',as:'addresses'
