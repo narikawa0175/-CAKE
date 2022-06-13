@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
    @order=Order.find(params[:id])
    @data=@order.order_datails
    @order.update(order_params)
+   @data.update_all(production_status: 1) if @order.making_status=="confirmation"
    redirect_to admin_order_path(@order.id)
   end
   

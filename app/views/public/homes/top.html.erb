@@ -20,14 +20,14 @@
   <div class="d-flex flex-row">
    <% @items.first(4).each do |item| %>
     <div class="m-2">
-     <%= image_tag item.image,size:"200x120" %>
      <% if customer_signed_in? %>
       <%= link_to item_path(item.id) do %>
-       <%= item.name %></br>
+       <%= image_tag item.image,size:"200x120" %>
       <% end %>
      <% else %>
-      <%= item.name %></br>
+      <%= image_tag item.image,size:"200x120" %>
      <% end %>
+     <%= item.name %></br>
      ￥<%= item.price.to_s(:delimited) %>
     </div>
    <% end %>

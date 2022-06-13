@@ -1,4 +1,12 @@
 ja:
+
+ views:
+  pagination:
+   first: "<<first"
+   previous: "<previous<"
+   next: "next>"
+   last: "last>>"
+   
  enums:
   order:
    method_of_payment:
